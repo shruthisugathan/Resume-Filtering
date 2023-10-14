@@ -1,57 +1,67 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>home page</title>
+    <title>output</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/deb4d88f50.js" crossorigin="anonymous"></script>
   </head>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-
-    body{
+        body{
         background-image: url(https://images.pexels.com/photos/2874782/pexels-photo-2874782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
         background-size: cover;
         background-attachment: fixed;
     }
-    h1{
+    div{
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 50px;
+        border-radius: 6px;
+        width: fit-content;
+        color: red;
         text-align: center;
-        text-transform: uppercase;
-        font-size: 60px;
-        font-family: 'Russo One', sans-serif;
-        padding-top: 70px;
-        color: white;
-        text-shadow: 2px 2px 4px black;
+        text-transform: capitalize;   
+        margin:100px auto;
+        position: relative;
+        animation-name: demo;
+        animation-duration: 1s;
     }
-    label{
-        color: white;
-        text-shadow: 2px 2px 4px black;
-        font-size: 20px;
-    }
-   
+    @keyframes demo{
+        0%{
+            top: -400px;
+        }
+        100%{
+            top: 0px;
+        }
+    } 
   </style>
   <body>
-    <a href="/" class="btn btn-danger float-right">logout</a>
-
-     
-      <div class="container">
-        <h1>resume filtering</h1>
-        <br><br>
+<a href="home" class="btn btn-secondary">back</a>
+    <div class="container">
+       <table class="table table-bordered table-striped table-hover table-dark">
+        <tr>
+          <th>CV</th>
+          <th>Score</th>
+        </tr>
         
-        <form action="" method="post">
-          {% csrf_token %}
-            <div class="form-group">
-                <label for="">Enter your text</label>
-                <textarea name="sentiment" id="sentiment" cols="30" rows="5" class="form-control" placeholder="enter your text"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success col-3" data-toggle="modal" data-target="#myModal">Detect</button>
-        </form>
-          
-      </div>
+        {% for i in data %}
+  
+
+
+        <tr>
+
+          <td>{{i.0}}</td>
+          <td>{{i.2}}</td>
+
+        </tr>
+
+        {% endfor %}
+
+       </table> 
+    </div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
